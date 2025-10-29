@@ -22,3 +22,5 @@ git add .
 git commit -m "Initialize Laravel project"
 git push
 ```
+
+### Other information
