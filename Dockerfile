@@ -16,8 +16,8 @@ RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
     && php -r "unlink('composer-setup.php');"
 
 # Устанавливаем Node.js и npm
-# RUN curl -sL https://deb.nodesource.com/setup_24.x | bash - \
-#     && apt-get install -y nodejs
+RUN curl -sL https://deb.nodesource.com/setup_24.x | bash - \
+    && apt-get install -y nodejs
 
 # Устанавливаем рабочую директорию
 WORKDIR /app
@@ -29,10 +29,10 @@ COPY . .
 RUN composer install --no-dev --optimize-autoloader
 
 # Устанавливаем JS зависимости и собираем фронтенд
-# RUN npm ci
-# RUN npm run build
+RUN npm ci
+RUN npm run build
 
-# Копируем .env и генерируем ключ приложения (если нужен для деплоя)
+Копируем .env и генерируем ключ приложения (если нужен для деплоя)
 # RUN cp .env.example .env && php artisan key:generate
 
 # Экспонируем порт
